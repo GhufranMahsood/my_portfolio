@@ -1,98 +1,143 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'app_colors.dart';
 
-/// App Typography design system based on Material 3 guidelines and Urbanist font family
+/// Clean typography design system using Google Fonts (Poppins & Fira Code)
 class AppTextStyles {
   AppTextStyles._();
 
-  static const String fontFamily = 'Urbanist';
+  static TextStyle get heroTitle => GoogleFonts.poppins(
+        fontSize: 52,
+        fontWeight: FontWeight.w700,
+        color: AppColors.textWhite,
+        height: 1.15,
+        letterSpacing: -0.5,
+      );
 
-  /// Builds a complete Material 3 [TextTheme] for the given [textColor]
+  static TextStyle get heroSubtitle => GoogleFonts.poppins(
+        fontSize: 22,
+        fontWeight: FontWeight.w500,
+        color: AppColors.textLight,
+      );
+
+  static TextStyle get sectionTitle => GoogleFonts.poppins(
+        fontSize: 36,
+        fontWeight: FontWeight.w700,
+        color: AppColors.textWhite,
+        letterSpacing: -0.5,
+      );
+
+  static TextStyle get sectionSubtitle => GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textMuted,
+        height: 1.6,
+      );
+
+  static TextStyle get sectionTag => GoogleFonts.firaCode(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: AppColors.primary,
+        letterSpacing: 1.2,
+      );
+
+  static TextStyle get quoteText => GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        fontStyle: FontStyle.italic,
+        color: AppColors.textMuted,
+        height: 1.6,
+      );
+
+  static TextStyle get cardTitle => GoogleFonts.poppins(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: AppColors.textWhite,
+      );
+
+  static TextStyle get cardSubtitle => GoogleFonts.poppins(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        color: AppColors.primary,
+      );
+
+  static TextStyle get bodyText => GoogleFonts.poppins(
+        fontSize: 15,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textLight,
+        height: 1.7,
+      );
+
+  static TextStyle get bodySmall => GoogleFonts.poppins(
+        fontSize: 13,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textMuted,
+        height: 1.6,
+      );
+
+  static TextStyle get statNumber => GoogleFonts.poppins(
+        fontSize: 38,
+        fontWeight: FontWeight.w800,
+        color: AppColors.textWhite,
+      );
+
+  static TextStyle get statLabel => GoogleFonts.poppins(
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        color: AppColors.textMuted,
+        height: 1.3,
+      );
+
+  static TextStyle get buttonText => GoogleFonts.poppins(
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        color: AppColors.white,
+        letterSpacing: 0.5,
+      );
+
+  static TextStyle get codeBadge => GoogleFonts.firaCode(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        color: AppColors.textLight,
+      );
+
+  static TextStyle get navItem => GoogleFonts.poppins(
+        fontSize: 15,
+        fontWeight: FontWeight.w500,
+        color: AppColors.textLight,
+      );
+
   static TextTheme getTextTheme({required Color textColor}) {
     return TextTheme(
-      displayLarge: GoogleFonts.urbanist(
-        fontSize: 57,
-        fontWeight: FontWeight.w700,
-        color: textColor,
-        letterSpacing: -0.25,
-      ),
-      displayMedium: GoogleFonts.urbanist(
-        fontSize: 45,
+      displayLarge: GoogleFonts.poppins(
+        fontSize: 52,
         fontWeight: FontWeight.w700,
         color: textColor,
       ),
-      displaySmall: GoogleFonts.urbanist(
+      headlineLarge: GoogleFonts.poppins(
         fontSize: 36,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
         color: textColor,
       ),
-      headlineLarge: GoogleFonts.urbanist(
-        fontSize: 32,
-        fontWeight: FontWeight.w600,
-        color: textColor,
-      ),
-      headlineMedium: GoogleFonts.urbanist(
+      headlineMedium: GoogleFonts.poppins(
         fontSize: 28,
         fontWeight: FontWeight.w600,
         color: textColor,
       ),
-      headlineSmall: GoogleFonts.urbanist(
-        fontSize: 24,
+      titleLarge: GoogleFonts.poppins(
+        fontSize: 20,
         fontWeight: FontWeight.w600,
         color: textColor,
       ),
-      titleLarge: GoogleFonts.urbanist(
-        fontSize: 22,
-        fontWeight: FontWeight.w600,
-        color: textColor,
-      ),
-      titleMedium: GoogleFonts.urbanist(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: textColor,
-        letterSpacing: 0.15,
-      ),
-      titleSmall: GoogleFonts.urbanist(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: textColor,
-        letterSpacing: 0.1,
-      ),
-      bodyLarge: GoogleFonts.urbanist(
+      bodyLarge: GoogleFonts.poppins(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: textColor,
-        letterSpacing: 0.15,
       ),
-      bodyMedium: GoogleFonts.urbanist(
+      bodyMedium: GoogleFonts.poppins(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         color: textColor,
-        letterSpacing: 0.25,
-      ),
-      bodySmall: GoogleFonts.urbanist(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: textColor,
-        letterSpacing: 0.4,
-      ),
-      labelLarge: GoogleFonts.urbanist(
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-        color: textColor,
-        letterSpacing: 0.1,
-      ),
-      labelMedium: GoogleFonts.urbanist(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: textColor,
-        letterSpacing: 0.5,
-      ),
-      labelSmall: GoogleFonts.urbanist(
-        fontSize: 10,
-        fontWeight: FontWeight.w500,
-        color: textColor,
-        letterSpacing: 0.5,
       ),
     );
   }

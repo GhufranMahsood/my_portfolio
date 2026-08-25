@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_portfolio/config/local/pref_manager.dart';
+import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'utils.dart';
 
@@ -18,17 +18,24 @@ extension ContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
   TextTheme get textTheme => theme.textTheme;
   ColorScheme get colorScheme => theme.colorScheme;
-  Future<bool> get isPremium => PrefManager().isPremiumUser();
+
+  bool get isMobile => ResponsiveLayout.isMobile(this);
+  bool get isTablet => ResponsiveLayout.isTablet(this);
+  bool get isDesktop => ResponsiveLayout.isDesktop(this);
 }
 
 extension StringExtension on String {
   dynamic get successSnack => Utils.snackBarMessage(this);
   dynamic get errorSnack => Utils.snackBarErrorMessage(this);
-  String get capitalizeFirst => this[0].toUpperCase() + substring(1);
+  dynamic get infoSnack => Utils.infoSnack(this);
+
+  String get capitalizeFirst =>
+      isEmpty ? this : this[0].toUpperCase() + substring(1);
+
   Future<void> get launchInBrowser async {
     final Uri uri = Uri.parse(this);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      "Could not launch map".errorSnack;
+      "Could not launch $this".errorSnack;
     }
   }
 }
@@ -46,18 +53,6 @@ extension EmptySpacer on num {
 extension ColorExtension on Color {
   Color get light => withValues(alpha: 0.5);
   Color get dark => withValues(alpha: 0.9);
-}
-
-extension DateTimeExtension on DateTime {
-  String timeAgo() {
-    final Duration diff = DateTime.now().difference(this);
-    if (diff.inSeconds < 60) return 'Just now';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
-    if (diff.inHours < 24) return '${diff.inHours}h ago';
-    if (diff.inDays == 1) return 'Yesterday';
-    if (diff.inDays < 7) return '${diff.inDays}d ago';
-    return '$day/$month/$year';
-  }
 }
 
 extension EdgeInsetsExtension on num {

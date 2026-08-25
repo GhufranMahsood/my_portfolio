@@ -1,80 +1,80 @@
 import 'package:flutter/material.dart';
 
-/// Design System Color Palette for Smart Habit Tracker
+/// Design System Color Palette - Electric Sky Blue (#21BCFF) & Deep Obsidian Theme
 class AppColors {
   AppColors._();
 
-  // Primary Brand Colors (Purple)
-  static const Color primary = Color(0xFF9333EA); // Vibrant Purple
-  static const Color primaryLight = Color(0xFFA855F7);
-  static const Color primaryDark = Color(0xFF7E22CE);
-  static const Color primaryContainer = Color(0xFFF3E8FF);
-  static const Color primaryContainerDark = Color(0xFF3B0764);
+  // Primary Dark Background Palette (Deep Obsidian Midnight Navy)
+  static const Color darkBackground = Color(0xFF070B12); // Deep obsidian background
+  static const Color darkCard = Color(0xFF101726); // Midnight slate card surface
+  static const Color darkCardSecondary = Color(0xFF182238); // Elevated card layer
+  static const Color darkBorder = Color(0xFF1E2D4A); // Slate-navy border
+  static const Color darkBorderLight = Color(0x3321BCFF); // Soft cyan border glow
 
-  // Secondary & Accent Colors
-  static const Color secondary = Color(0xFFE2E8F0);
-  static const Color secondaryDark = Color(0xFF1E293B);
-  static const Color accent = Color(0xFFF472B6);
-  static const Color gold = Color(0xFFFBBF24);
-  static const Color orange = Color(0xFFF97316);
-  static const Color yellow = Color(0xFFFBBF24);
-  static const Color blue = Color(0xFF3B82F6);
+  // Primary Brand Accents (#21BCFF - Electric Sky Cyan)
+  static const Color primary = Color(0xFF21BCFF); // Vibrant Electric Sky Blue
+  static const Color primaryLight = Color(0xFF67D4FF); // Soft Aqua / Ice Blue
+  static const Color primaryDark = Color(0xFF009EE0); // Deep Azure / Ocean Blue
+  static const Color primaryAccentGlow = Color(0x3321BCFF); // Cyan glow
 
-  // Semantic / Status Colors
-  static const Color success = Color(0xFF10B981);
-  static const Color green = Color(0xFF10B981);
-  static const Color lightGreen = Color(0xFF34D399);
-  static const Color warning = Color(0xFFF59E0B);
-  static const Color error = Color(0xFFEF4444);
-  static const Color red = Color(0xFFEF4444);
-  static const Color info = Color(0xFF3B82F6);
+  // Secondary & Highlight Accents
+  static const Color secondary = Color(0xFF00E5FF); // Neon Aqua
+  static const Color secondaryLight = Color(0xFF80F0FF);
+  static const Color cyanAccent = Color(0xFF21BCFF);
+  static const Color purpleAccent = Color(0xFFA855F7);
 
-  // Light Neutral Palette
+  // Neutral Text Colors
+  static const Color textWhite = Color(0xFFF8FAFC); // High emphasis
+  static const Color textLight = Color(0xFFCBD5E1); // Medium-high emphasis
+  static const Color textMuted = Color(0xFF94A3B8); // Medium-low emphasis
+  static const Color textDim = Color(0xFF64748B); // Low emphasis
+
+  // Status & Badges
+  static const Color badgeBg = Color(0x1F21BCFF); // 12% #21BCFF
+  static const Color badgeBorder = Color(0xFF21BCFF);
+  static const Color badgeText = Color(0xFF67D4FF);
+
+  static const Color openSourceBadgeBg = Color(0x2621BCFF);
+  static const Color openSourceBadgeText = Color(0xFF21BCFF);
+  static const Color productBadgeBg = Color(0x26A855F7);
+  static const Color productBadgeText = Color(0xFFA855F7);
+
+  // Tech Category Colors
+  static const Color techMobile = Color(0xFF02569B);
+  static const Color techWeb = Color(0xFFE44D26);
+  static const Color techServer = Color(0xFF339933);
+  static const Color techDb = Color(0xFFF29111);
+  static const Color techVcs = Color(0xFFF05032);
+  static const Color techDesign = Color(0xFFF24E1E);
+
+  // Common UI Colors
   static const Color white = Color(0xFFFFFFFF);
-  static const Color lightBackground = Color(0xFFF9FAFB); // Very light grey for background
-  static const Color lightSurface = Color(0xFFFFFFFF); // White for cards/surface
-  static const Color lightSurfaceSecondary = Color(0xFFF3F4F6); 
-  static const Color lightBorder = Color(0xFFE5E7EB);
-  static const Color grey = Color(0xFFE5E7EB);
-  static const Color lightGrey = Color(0xFFF3F4F6);
-  static const Color textPrimaryLight = Color(0xFF111827); // Very dark grey/black
-  static const Color textSecondaryLight = Color(0xFF6B7280); // Medium grey
-
-  // Dark Neutral Palette
   static const Color black = Color(0xFF000000);
-  static const Color darkBackground = Color(0xFF09090B); // Very dark for background
-  static const Color darkSurface = Color(0xFF18181B); // Slightly lighter for cards
-  static const Color darkSurfaceSecondary = Color(0xFF27272A);
-  static const Color darkBorder = Color(0xFF27272A);
-  static const Color darkGrey = Color(0xFF71717A);
-  static const Color textPrimaryDark = Color(0xFFFAFAFA); // White/Very light grey
-  static const Color textSecondaryDark = Color(0xFFA1A1AA); // Medium grey
+  static const Color transparent = Colors.transparent;
+  static const Color error = Color(0xFFEF4444);
+  static const Color success = Color(0xFF10B981);
 
-  // Utility Colors
-  static const Color transparent = Color(0x00000000);
-  static const Color overlay = Color(0x80000000);
+  // Gradients
+  static const LinearGradient primaryGradient = LinearGradient(
+    colors: [Color(0xFF21BCFF), Color(0xFF009EE0)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 
-  // Habit Specific Colors (from HabitKit screenshot)
-  static const List<Color> habitColors = [
-    Color(0xFFEF4444), // Red
-    Color(0xFFF97316), // Orange
-    Color(0xFFF59E0B), // Amber
-    Color(0xFFEAB308), // Yellow
-    Color(0xFF84CC16), // Lime
-    Color(0xFF22C55E), // Green
-    Color(0xFF10B981), // Emerald
-    Color(0xFF14B8A6), // Teal
-    Color(0xFF06B6D4), // Cyan
-    Color(0xFF0EA5E9), // Light Blue
-    Color(0xFF3B82F6), // Blue
-    Color(0xFF6366F1), // Indigo
-    Color(0xFF8B5CF6), // Violet
-    Color(0xFFA855F7), // Purple
-    Color(0xFFD946EF), // Fuchsia
-    Color(0xFFEC4899), // Pink
-    Color(0xFFF43F5E), // Rose
-    Color(0xFF64748B), // Slate
-    Color(0xFF71717A), // Zinc
-    Color(0xFF78716C), // Stone
-  ];
+  static const LinearGradient accentGradient = LinearGradient(
+    colors: [Color(0xFF67D4FF), Color(0xFF21BCFF)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const RadialGradient heroGlowGradient = RadialGradient(
+    colors: [Color(0x3321BCFF), Colors.transparent],
+    radius: 0.8,
+  );
+
+  static const LinearGradient cardGradient = LinearGradient(
+    colors: [Color(0xFF101726), Color(0xFF070B12)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }

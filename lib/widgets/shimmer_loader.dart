@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
-import 'package:my_portfolio/config/theme/app_theme.dart';
+import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/extensions.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ShimmerLoader extends StatelessWidget {
   final double? width;
   final double? height;
-  final ShapeBorder shapeBorder;    
+  final ShapeBorder shapeBorder;
 
   const ShimmerLoader.rectangular({
     super.key,
@@ -32,13 +32,8 @@ class ShimmerLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final customTheme = Theme.of(context).extension<CustomThemeExtension>();
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    final baseColor = customTheme?.shimmerBase ??
-        (isDark ? const Color(0xFF1E293B) : Colors.grey[300]!);
-    final highlightColor = customTheme?.shimmerHighlight ??
-        (isDark ? const Color(0xFF334155) : Colors.grey[100]!);
+    const baseColor = AppColors.darkCardSecondary;
+    const highlightColor = AppColors.darkBorder;
 
     return Shimmer.fromColors(
       baseColor: baseColor,
