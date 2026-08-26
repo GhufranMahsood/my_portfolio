@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/widgets/hover_builder.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 
 class TechChip extends StatelessWidget {
   final String label;
@@ -53,15 +54,13 @@ class TechChip extends StatelessWidget {
             children: [
               if (icon != null) ...[
                 icon!,
-                const SizedBox(width: 8),
+                8.horSpace,
               ],
-              Text(
-                label,
-                style: GoogleFonts.poppins(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
-                  color: isHovered ? AppColors.textWhite : AppColors.textLight,
-                ),
+              MyText(
+                text: label,
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                fontColor: isHovered ? AppColors.textWhite : AppColors.textLight,
               ),
             ],
           ),
@@ -70,3 +69,4 @@ class TechChip extends StatelessWidget {
     );
   }
 }
+

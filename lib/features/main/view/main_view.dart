@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/controller/navigation_controller.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/about/view/about_view.dart';
 import 'package:my_portfolio/features/contact_us/view/contact_view.dart';
 import 'package:my_portfolio/features/experience/view/community_view.dart';
@@ -13,6 +13,7 @@ import 'package:my_portfolio/features/main/view_model/main_view_model.dart';
 import 'package:my_portfolio/features/projects/view/projects_view.dart';
 import 'package:my_portfolio/features/skill/view/skill_view.dart';
 import 'package:my_portfolio/widgets/ambient_glow_background.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 import 'package:my_portfolio/widgets/nav_bar.dart';
 import 'package:my_portfolio/widgets/social_icons_row.dart';
 
@@ -60,74 +61,74 @@ class MainView extends StatelessWidget {
                   child: Center(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 1280),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        // 1. Header (Hero) Section
-                        Container(
-                          key: navController.headerKey,
-                          child: const HeaderView(),
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          // 1. Header (Hero) Section
+                          Container(
+                            key: navController.headerKey,
+                            child: const HeaderView(),
+                          ),
 
-                        const _SectionDivider(),
+                          const _SectionDivider(),
 
-                        // 2. About Me Section
-                        Container(
-                          key: navController.aboutKey,
-                          child: const AboutView(),
-                        ),
+                          // 2. About Me Section
+                          Container(
+                            key: navController.aboutKey,
+                            child: const AboutView(),
+                          ),
 
-                        const _SectionDivider(),
+                          const _SectionDivider(),
 
-                        // 3. Tech Stack Section
-                        Container(
-                          key: navController.techKey,
-                          child: const SkillView(),
-                        ),
+                          // 3. Tech Stack Section
+                          Container(
+                            key: navController.techKey,
+                            child: const SkillView(),
+                          ),
 
-                        const _SectionDivider(),
+                          const _SectionDivider(),
 
-                        // 4. Projects Section
-                        Container(
-                          key: navController.projectsKey,
-                          child: const ProjectsView(),
-                        ),
+                          // 4. Projects Section
+                          Container(
+                            key: navController.projectsKey,
+                            child: const ProjectsView(),
+                          ),
 
-                        const _SectionDivider(),
+                          const _SectionDivider(),
 
-                        // 5. Experience Section
-                        Container(
-                          key: navController.experienceKey,
-                          child: const ExperienceView(),
-                        ),
+                          // 5. Experience Section
+                          Container(
+                            key: navController.experienceKey,
+                            child: const ExperienceView(),
+                          ),
 
-                        const _SectionDivider(),
+                          const _SectionDivider(),
 
-                        // 6. Community Work Section
-                        Container(
-                          key: navController.communityKey,
-                          child: const CommunityView(),
-                        ),
+                          // 6. Community Work Section
+                          Container(
+                            key: navController.communityKey,
+                            child: const CommunityView(),
+                          ),
 
-                        const _SectionDivider(),
+                          const _SectionDivider(),
 
-                        // 7. Contact Us & Footer Section
-                        Container(
-                          key: navController.contactKey,
-                          child: const ContactView(),
-                        ),
-                      ],
+                          // 7. Contact Us & Footer Section
+                          Container(
+                            key: navController.contactKey,
+                            child: const ContactView(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 }
 
 class _SectionDivider extends StatelessWidget {
@@ -135,9 +136,9 @@ class _SectionDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 48),
-      child: Divider(
+    return Padding(
+      padding: 48.horizontalPadding,
+      child: const Divider(
         color: AppColors.darkBorderLight,
         thickness: 1,
       ),
@@ -163,36 +164,30 @@ class _MobileDrawer extends StatelessWidget {
           children: [
             // Drawer Header
             Padding(
-              padding: const EdgeInsets.all(24),
+              padding: 24.allPadding,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        '< ',
-                        style: GoogleFonts.firaCode(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primary,
-                        ),
+                      MyText(
+                        text: '< ',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        fontColor: AppColors.primary,
                       ),
-                      Text(
-                        AppConstants.firstName,
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.textWhite,
-                        ),
+                      MyText(
+                        text: AppConstants.firstName,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        fontColor: AppColors.textWhite,
                       ),
-                      Text(
-                        ' />',
-                        style: GoogleFonts.firaCode(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primary,
-                        ),
+                      MyText(
+                        text: ' />',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                        fontColor: AppColors.primary,
                       ),
                     ],
                   ),
@@ -224,16 +219,14 @@ class _MobileDrawer extends StatelessWidget {
                             : AppColors.textMuted,
                         size: 20,
                       ),
-                      title: Text(
-                        item.title,
-                        style: GoogleFonts.poppins(
-                          fontSize: 15,
-                          fontWeight:
-                              isActive ? FontWeight.w600 : FontWeight.w500,
-                          color: isActive
-                              ? AppColors.primary
-                              : AppColors.textLight,
-                        ),
+                      title: MyText(
+                        text: item.title,
+                        fontSize: 15,
+                        fontWeight:
+                            isActive ? FontWeight.w600 : FontWeight.w500,
+                        fontColor: isActive
+                            ? AppColors.primary
+                            : AppColors.textLight,
                       ),
                       selected: isActive,
                       selectedTileColor:
@@ -254,12 +247,12 @@ class _MobileDrawer extends StatelessWidget {
 
             // Drawer Bottom Socials
             Padding(
-              padding: const EdgeInsets.all(24),
+              padding: 24.allPadding,
               child: Column(
-                children: const [
-                  Divider(color: AppColors.darkBorderLight),
-                  SizedBox(height: 16),
-                  SocialIconsRow(
+                children: [
+                  const Divider(color: AppColors.darkBorderLight),
+                  16.verSpace,
+                  const SocialIconsRow(
                     mainAxisAlignment: MainAxisAlignment.center,
                     spacing: 12,
                     iconSize: 16,
@@ -273,3 +266,4 @@ class _MobileDrawer extends StatelessWidget {
     );
   }
 }
+

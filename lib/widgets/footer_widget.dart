@@ -22,7 +22,7 @@ class FooterWidget extends StatelessWidget {
           textAlign: TextAlign.center,
           text: TextSpan(
             text: 'Designed & Crafted by ',
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.urbanist(
               fontSize: 14,
               fontWeight: FontWeight.w400,
               color: AppColors.textMuted,
@@ -30,7 +30,7 @@ class FooterWidget extends StatelessWidget {
             children: [
               TextSpan(
                 text: AppConstants.name,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.urbanist(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: AppColors.primary,
@@ -43,3 +43,4 @@ class FooterWidget extends StatelessWidget {
     );
   }
 }
+

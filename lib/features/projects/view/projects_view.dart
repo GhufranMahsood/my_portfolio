@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/projects/model/project_model.dart';
 import 'package:my_portfolio/features/projects/view_model/project_view_model.dart';
-import 'package:my_portfolio/widgets/custom_button.dart';
 import 'package:my_portfolio/widgets/glass_container.dart';
 import 'package:my_portfolio/widgets/hover_builder.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 import 'package:my_portfolio/widgets/section_header.dart';
+import 'package:my_portfolio/widgets/submit_button.dart';
 
 class ProjectsView extends StatelessWidget {
   const ProjectsView({super.key});
@@ -35,11 +35,11 @@ class ProjectsView extends StatelessWidget {
             subtitle: AppConstants.projectsSubtitle,
             isCenter: true,
           ),
-          const SizedBox(height: 32),
+          32.verSpace,
 
           // Filter Tabs
           _FilterTabs(viewModel: viewModel),
-          const SizedBox(height: 48),
+          48.verSpace,
 
           // Reactive Projects Grid
           Obx(() {
@@ -68,18 +68,23 @@ class ProjectsView extends StatelessWidget {
             );
           }),
 
-          const SizedBox(height: 54),
+          54.verSpace,
 
           // See More on GitHub Button
-          CustomButton(
-            text: 'Explore More on GitHub',
-            onPressed: viewModel.seeMoreProjects,
-            variant: ButtonVariant.outlined,
-            icon: const Icon(
-              Icons.arrow_outward_rounded,
-              color: AppColors.primary,
-              size: 18,
-            ),
+          SubmitButton(
+            width: 240,
+            height: 48,
+            radius: 12,
+            title: 'Explore More on GitHub',
+            onTap: viewModel.seeMoreProjects,
+            isIcon: true,
+            icon: Icons.arrow_outward_rounded,
+            iconSize: 18,
+            fontSize: 14,
+            color: Colors.transparent,
+            borderColor: AppColors.primary,
+            textColor: AppColors.primary,
+            iconColor: AppColors.primary,
           ),
         ],
       ),
@@ -131,15 +136,13 @@ class _FilterTabs extends StatelessWidget {
                     width: 1.2,
                   ),
                 ),
-                child: Text(
-                  option.label,
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                    color: isSelected
-                        ? AppColors.darkBackground
-                        : (isHovered ? AppColors.textWhite : AppColors.textLight),
-                  ),
+                child: MyText(
+                  text: option.label,
+                  fontSize: 13,
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                  fontColor: isSelected
+                      ? AppColors.darkBackground
+                      : (isHovered ? AppColors.textWhite : AppColors.textLight),
                 ),
               );
             },
@@ -185,7 +188,7 @@ class _ProjectCard extends StatelessWidget {
               ? Matrix4.translationValues(0, -6, 0)
               : Matrix4.identity(),
           child: GlassContainer(
-            padding: const EdgeInsets.all(18),
+            padding: 18.allPadding,
             borderRadius: 20,
             borderColor: isHovered
                 ? AppColors.primary.withValues(alpha: 0.7)
@@ -216,13 +219,11 @@ class _ProjectCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: badgeColor, width: 1),
                       ),
-                      child: Text(
-                        badgeText,
-                        style: GoogleFonts.poppins(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                          color: badgeColor,
-                        ),
+                      child: MyText(
+                        text: badgeText,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        fontColor: badgeColor,
                       ),
                     ),
                     Icon(
@@ -234,7 +235,7 @@ class _ProjectCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 14),
+                14.verSpace,
 
                 // Browser Mockup Window Preview Frame
                 Container(
@@ -265,7 +266,7 @@ class _ProjectCard extends StatelessWidget {
                                 shape: BoxShape.circle,
                               ),
                             ),
-                            const SizedBox(width: 5),
+                            5.horSpace,
                             Container(
                               width: 8,
                               height: 8,
@@ -274,7 +275,7 @@ class _ProjectCard extends StatelessWidget {
                                 shape: BoxShape.circle,
                               ),
                             ),
-                            const SizedBox(width: 5),
+                            5.horSpace,
                             Container(
                               width: 8,
                               height: 8,
@@ -307,13 +308,11 @@ class _ProjectCard extends StatelessWidget {
                                         color: AppColors.primary,
                                         size: 36,
                                       ),
-                                      const SizedBox(height: 6),
-                                      Text(
-                                        project.title,
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 12,
-                                          color: AppColors.textMuted,
-                                        ),
+                                      6.verSpace,
+                                      MyText(
+                                        text: project.title,
+                                        fontSize: 12,
+                                        fontColor: AppColors.textMuted,
                                       ),
                                     ],
                                   ),
@@ -326,53 +325,50 @@ class _ProjectCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
+                16.verSpace,
 
                 // Project Title
-                Text(
-                  project.title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.textWhite,
-                  ),
+                MyText(
+                  text: project.title,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  fontColor: AppColors.textWhite,
                 ),
-                const SizedBox(height: 8),
+                8.verSpace,
 
                 // Description
-                Text(
-                  project.description,
-                  maxLines: 2,
+                MyText(
+                  text: project.description,
+                  maxLine: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textMuted,
-                    height: 1.5,
-                  ),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
+                  fontColor: AppColors.textMuted,
+                  height: 1.5,
                 ),
-                const SizedBox(height: 16),
+                16.verSpace,
 
                 // Action Pill Buttons
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
                   children: project.actionLinks.map((link) {
-                    return CustomButton(
-                      text: link.title,
-                      onPressed: () => onLinkTap(link.url),
-                      variant: ButtonVariant.actionPill,
+                    return SubmitButton(
+                      width: 105,
+                      height: 32,
+                      radius: 8,
+                      fontSize: 11,
+                      title: link.title,
+                      onTap: () => onLinkTap(link.url),
+                      isIcon: true,
                       icon: link.icon is IconData
-                          ? Icon(
-                              link.icon as IconData,
-                              size: 11,
-                              color: AppColors.primary,
-                            )
-                          : FaIcon(
-                              link.icon,
-                              size: 11,
-                              color: AppColors.primary,
-                            ),
+                          ? (link.icon as IconData)
+                          : Icons.link_rounded,
+                      iconSize: 12,
+                      color: AppColors.darkCard,
+                      borderColor: AppColors.primary.withValues(alpha: 0.3),
+                      textColor: AppColors.textLight,
+                      iconColor: AppColors.primary,
                     );
                   }).toList(),
                 ),
@@ -384,3 +380,4 @@ class _ProjectCard extends StatelessWidget {
     );
   }
 }
+

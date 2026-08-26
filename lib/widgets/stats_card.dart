@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 
 class StatsCard extends StatelessWidget {
   final String number;
@@ -22,7 +23,7 @@ class StatsCard extends StatelessWidget {
       children: [
         if (icon != null) ...[
           Container(
-            padding: const EdgeInsets.all(10),
+            padding: 10.allPadding,
             decoration: BoxDecoration(
               color: AppColors.primary.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(12),
@@ -33,7 +34,7 @@ class StatsCard extends StatelessWidget {
             ),
             child: Icon(icon, color: AppColors.primary, size: 22),
           ),
-          const SizedBox(width: 14),
+          14.horSpace,
         ],
         ShaderMask(
           shaderCallback: (bounds) => const LinearGradient(
@@ -41,27 +42,24 @@ class StatsCard extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ).createShader(bounds),
-          child: Text(
-            number,
-            style: GoogleFonts.poppins(
-              fontSize: 44,
-              fontWeight: FontWeight.w800,
-              color: Colors.white,
-              height: 1.0,
-            ),
+          child: MyText(
+            text: number,
+            fontSize: 44,
+            fontWeight: FontWeight.w800,
+            fontColor: Colors.white,
+            height: 1.0,
           ),
         ),
-        const SizedBox(width: 12),
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-            color: AppColors.textMuted,
-            height: 1.35,
-          ),
+        12.horSpace,
+        MyText(
+          text: label,
+          fontSize: 13,
+          fontWeight: FontWeight.w500,
+          fontColor: AppColors.textMuted,
+          height: 1.35,
         ),
       ],
     );
   }
 }
+

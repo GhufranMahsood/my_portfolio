@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
 import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/main/view/main_view.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -81,49 +81,40 @@ class _SplashViewState extends State<SplashView>
                       ),
                     ],
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        '< ',
-                        style: GoogleFonts.firaCode(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primary,
-                        ),
+                      MyText(
+                        text: '< ',
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
+                        fontColor: AppColors.primary,
                       ),
-                      Text(
-                        AppConstants.firstName,
-                        style: GoogleFonts.poppins(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.textWhite,
-                        ),
+                      MyText(
+                        text: AppConstants.firstName,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w800,
+                        fontColor: AppColors.textWhite,
                       ),
-                      Text(
-                        ' />',
-                        style: GoogleFonts.firaCode(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.primary,
-                        ),
+                      MyText(
+                        text: ' />',
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
+                        fontColor: AppColors.primary,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                20.verSpace,
 
                 // Tagline
-                Text(
-                  'Full Stack Flutter Expert',
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.primaryLight,
-                    letterSpacing: 1.2,
-                  ),
+                const MyText(
+                  text: 'Full Stack Flutter Expert',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: AppColors.primaryLight,
                 ),
-                const SizedBox(height: 28),
+                28.verSpace,
 
                 // Loading indicator
                 const SizedBox(
@@ -142,3 +133,4 @@ class _SplashViewState extends State<SplashView>
     );
   }
 }
+

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/experience/model/experience_model.dart';
 import 'package:my_portfolio/features/experience/view_model/experience_view_model.dart';
 import 'package:my_portfolio/widgets/glass_container.dart';
 import 'package:my_portfolio/widgets/hover_builder.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 import 'package:my_portfolio/widgets/section_header.dart';
 import 'package:my_portfolio/widgets/tech_chip.dart';
 
@@ -33,7 +34,7 @@ class ExperienceView extends StatelessWidget {
             subtitle: AppConstants.experienceSubtitle,
             isCenter: true,
           ),
-          SizedBox(height: isDesktop ? 60 : 40),
+          (isDesktop ? 60 : 40).verSpace,
 
           // Vertical Experience Timeline
           Column(
@@ -123,7 +124,7 @@ class _TimelineItem extends StatelessWidget {
                   ),
               ],
             ),
-            const SizedBox(width: 28),
+            28.horSpace,
           ],
 
           // Card Content
@@ -133,7 +134,7 @@ class _TimelineItem extends StatelessWidget {
               child: HoverBuilder(
                 builder: (context, isHovered) {
                   return GlassContainer(
-                    padding: EdgeInsets.all(isDesktop ? 28 : 20),
+                    padding: (isDesktop ? 28 : 20).allPadding,
                     borderRadius: 20,
                     borderColor: isHovered
                         ? AppColors.primary.withValues(alpha: 0.6)
@@ -147,13 +148,13 @@ class _TimelineItem extends StatelessWidget {
                                 flex: 4,
                                 child: _ExperienceMeta(experience: experience),
                               ),
-                              const SizedBox(width: 32),
+                              32.horSpace,
                               Container(
                                 width: 1,
                                 height: 200,
                                 color: AppColors.darkBorderLight,
                               ),
-                              const SizedBox(width: 32),
+                              32.horSpace,
                               // Right Bullets
                               Expanded(
                                 flex: 6,
@@ -167,9 +168,9 @@ class _TimelineItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _ExperienceMeta(experience: experience),
-                              const SizedBox(height: 20),
+                              20.verSpace,
                               const Divider(color: AppColors.darkBorderLight),
-                              const SizedBox(height: 16),
+                              16.verSpace,
                               _ExperienceBullets(
                                 bulletPoints: experience.bulletPoints,
                               ),
@@ -200,7 +201,7 @@ class _ExperienceMeta extends StatelessWidget {
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: 8.allPadding,
               decoration: BoxDecoration(
                 color: AppColors.primary.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(10),
@@ -215,31 +216,27 @@ class _ExperienceMeta extends StatelessWidget {
                 size: 18,
               ),
             ),
-            const SizedBox(width: 12),
+            12.horSpace,
             Expanded(
-              child: Text(
-                experience.company,
-                style: GoogleFonts.poppins(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.textWhite,
-                ),
+              child: MyText(
+                text: experience.company,
+                fontSize: 22,
+                fontWeight: FontWeight.w700,
+                fontColor: AppColors.textWhite,
               ),
             ),
           ],
         ),
-        const SizedBox(height: 10),
+        10.verSpace,
 
         // Role
-        Text(
-          experience.role,
-          style: GoogleFonts.poppins(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            color: AppColors.primary,
-          ),
+        MyText(
+          text: experience.role,
+          fontSize: 15,
+          fontWeight: FontWeight.w600,
+          fontColor: AppColors.primary,
         ),
-        const SizedBox(height: 6),
+        6.verSpace,
 
         // Duration Chip
         Container(
@@ -257,31 +254,26 @@ class _ExperienceMeta extends StatelessWidget {
                 size: 13,
                 color: AppColors.primaryLight,
               ),
-              const SizedBox(width: 6),
-              Text(
-                experience.duration,
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textLight,
-                ),
+              6.horSpace,
+              MyText(
+                text: experience.duration,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                fontColor: AppColors.textLight,
               ),
             ],
           ),
         ),
-        const SizedBox(height: 20),
+        20.verSpace,
 
         // Tech Stack
-        Text(
-          'Technologies & Tools',
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textMuted,
-            letterSpacing: 0.5,
-          ),
+        const MyText(
+          text: 'Technologies & Tools',
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          fontColor: AppColors.textMuted,
         ),
-        const SizedBox(height: 10),
+        10.verSpace,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -325,14 +317,12 @@ class _ExperienceBullets extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Text(
-                  bullet,
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.textLight,
-                    height: 1.6,
-                  ),
+                child: MyText(
+                  text: bullet,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  fontColor: AppColors.textLight,
+                  height: 1.6,
                 ),
               ),
             ],
@@ -342,3 +332,4 @@ class _ExperienceBullets extends StatelessWidget {
     );
   }
 }
+

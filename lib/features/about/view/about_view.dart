@@ -4,12 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/controller/navigation_controller.dart';
 import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
-import 'package:my_portfolio/config/theme/app_text_styles.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
 import 'package:my_portfolio/config/utils/enum.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/about/view_model/about_view_model.dart';
-import 'package:my_portfolio/widgets/custom_button.dart';
 import 'package:my_portfolio/widgets/glass_container.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
+import 'package:my_portfolio/widgets/submit_button.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
@@ -35,7 +36,7 @@ class AboutView extends StatelessWidget {
                   flex: 5,
                   child: _ProfileHighlightsCard(),
                 ),
-                const SizedBox(width: 56),
+                56.horSpace,
                 Expanded(
                   flex: 7,
                   child: _AboutDetails(viewModel: viewModel),
@@ -47,12 +48,12 @@ class AboutView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 _AboutDetails(viewModel: viewModel, isCenter: !isTablet),
-                const SizedBox(height: 40),
+                40.verSpace,
                 const _ProfileHighlightsCard(),
               ],
             ),
 
-          const SizedBox(height: 56),
+          56.verSpace,
 
           // 4 Core Engineering Pillars
           _CorePillarsGrid(isDesktop: isDesktop, isTablet: isTablet),
@@ -68,7 +69,7 @@ class _ProfileHighlightsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
-      padding: const EdgeInsets.all(28),
+      padding: 28.allPadding,
       borderRadius: 22,
       borderColor: AppColors.primary.withValues(alpha: 0.35),
       child: Column(
@@ -78,7 +79,7 @@ class _ProfileHighlightsCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: 10.allPadding,
                 decoration: BoxDecoration(
                   color: AppColors.primary.withValues(alpha: 0.12),
                   borderRadius: BorderRadius.circular(12),
@@ -93,26 +94,22 @@ class _ProfileHighlightsCard extends StatelessWidget {
                   size: 22,
                 ),
               ),
-              const SizedBox(width: 14),
+              14.horSpace,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      AppConstants.name,
-                      style: GoogleFonts.poppins(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textWhite,
-                      ),
+                    const MyText(
+                      text: AppConstants.name,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      fontColor: AppColors.textWhite,
                     ),
-                    Text(
-                      AppConstants.role,
-                      style: GoogleFonts.poppins(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.primaryLight,
-                      ),
+                    const MyText(
+                      text: AppConstants.role,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      fontColor: AppColors.primaryLight,
                     ),
                   ],
                 ),
@@ -120,9 +117,9 @@ class _ProfileHighlightsCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 24),
+          24.verSpace,
           const Divider(color: AppColors.darkBorderLight),
-          const SizedBox(height: 20),
+          20.verSpace,
 
           // Details List
           _infoTile(
@@ -130,39 +127,39 @@ class _ProfileHighlightsCard extends StatelessWidget {
             title: 'Location',
             value: AppConstants.location,
           ),
-          const SizedBox(height: 16),
+          16.verSpace,
           _infoTile(
             icon: Icons.work_history_outlined,
             title: 'Experience',
             value: '${AppConstants.expYears}+ Years (Startup & Enterprise)',
           ),
-          const SizedBox(height: 16),
+          16.verSpace,
           _infoTile(
             icon: Icons.flutter_dash,
             title: 'Core Domain',
             value: 'Flutter, Dart, Mobile & Web Architecture',
           ),
-          const SizedBox(height: 16),
+          16.verSpace,
           _infoTile(
             icon: Icons.check_circle_outline_rounded,
             title: 'Availability',
             value: 'Open for High-Impact Projects / Full-Time',
           ),
 
-          const SizedBox(height: 24),
+          24.verSpace,
 
           // Quick Tech Tags
           Container(
-            padding: const EdgeInsets.all(14),
+            padding: 14.allPadding,
             decoration: BoxDecoration(
               color: AppColors.darkCardSecondary,
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: AppColors.darkBorder, width: 1),
             ),
-            child: Wrap(
+            child: const Wrap(
               spacing: 8,
               runSpacing: 8,
-              children: const [
+              children: [
                 _MiniTag('Clean Code'),
                 _MiniTag('Bloc Pattern'),
                 _MiniTag('REST & GraphQL'),
@@ -185,27 +182,23 @@ class _ProfileHighlightsCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Icon(icon, color: AppColors.primary, size: 18),
-        const SizedBox(width: 12),
+        12.horSpace,
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style: GoogleFonts.poppins(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textDim,
-                ),
+              MyText(
+                text: title,
+                fontSize: 11,
+                fontWeight: FontWeight.w500,
+                fontColor: AppColors.textDim,
               ),
-              const SizedBox(height: 2),
-              Text(
-                value,
-                style: GoogleFonts.poppins(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textLight,
-                ),
+              2.verSpace,
+              MyText(
+                text: value,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                fontColor: AppColors.textLight,
               ),
             ],
           ),
@@ -232,13 +225,11 @@ class _MiniTag extends StatelessWidget {
           width: 1,
         ),
       ),
-      child: Text(
-        label,
-        style: GoogleFonts.poppins(
-          fontSize: 11,
-          fontWeight: FontWeight.w500,
-          color: AppColors.textLight,
-        ),
+      child: MyText(
+        text: label,
+        fontSize: 11,
+        fontWeight: FontWeight.w500,
+        fontColor: AppColors.textLight,
       ),
     );
   }
@@ -270,24 +261,21 @@ class _AboutDetails extends StatelessWidget {
               width: 1,
             ),
           ),
-          child: Text(
-            viewModel.aboutData.title,
-            style: GoogleFonts.firaCode(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.primary,
-              letterSpacing: 1.2,
-            ),
+          child: MyText(
+            text: viewModel.aboutData.title,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            fontColor: AppColors.primary,
           ),
         ),
-        const SizedBox(height: 18),
+        18.verSpace,
 
         // Heading
         RichText(
           textAlign: isCenter ? TextAlign.center : TextAlign.start,
           text: TextSpan(
             text: 'Hello there! My name\nis ',
-            style: GoogleFonts.poppins(
+            style: GoogleFonts.urbanist(
               fontSize: isCenter ? 32 : 44,
               fontWeight: FontWeight.w700,
               color: AppColors.textWhite,
@@ -297,7 +285,7 @@ class _AboutDetails extends StatelessWidget {
             children: [
               TextSpan(
                 text: AppConstants.firstName,
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.urbanist(
                   fontSize: isCenter ? 32 : 44,
                   fontWeight: FontWeight.w800,
                   color: AppColors.primary,
@@ -306,7 +294,7 @@ class _AboutDetails extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 18),
+        18.verSpace,
 
         // Quote
         Container(
@@ -316,20 +304,26 @@ class _AboutDetails extends StatelessWidget {
               left: BorderSide(color: AppColors.primary, width: 3),
             ),
           ),
-          child: Text(
-            viewModel.aboutData.quote,
-            style: AppTextStyles.quoteText,
+          child: MyText(
+            text: viewModel.aboutData.quote,
+            fontSize: 15,
+            fontWeight: FontWeight.w400,
+            fontColor: AppColors.textMuted,
+            height: 1.6,
           ),
         ),
-        const SizedBox(height: 24),
+        24.verSpace,
 
         // Bio text
-        Text(
-          viewModel.aboutData.bio,
-          textAlign: isCenter ? TextAlign.center : TextAlign.start,
-          style: AppTextStyles.bodyText,
+        MyText(
+          text: viewModel.aboutData.bio,
+          alignment: isCenter ? TextAlign.center : TextAlign.start,
+          fontSize: 15,
+          fontWeight: FontWeight.w400,
+          fontColor: AppColors.textLight,
+          height: 1.7,
         ),
-        const SizedBox(height: 32),
+        32.verSpace,
 
         // Action Buttons Row
         Wrap(
@@ -337,25 +331,35 @@ class _AboutDetails extends StatelessWidget {
           runSpacing: 12,
           alignment: isCenter ? WrapAlignment.center : WrapAlignment.start,
           children: [
-            CustomButton(
-              text: 'Download Resume',
-              onPressed: viewModel.downloadResume,
-              icon: const Icon(
-                Icons.file_download_outlined,
-                color: Colors.white,
-                size: 20,
-              ),
+            SubmitButton(
+              width: 190,
+              height: 48,
+              radius: 12,
+              title: 'Download Resume',
+              onTap: viewModel.downloadResume,
+              isIcon: true,
+              icon: Icons.file_download_outlined,
+              iconSize: 20,
+              fontSize: 14,
+              color: AppColors.primary,
+              textColor: Colors.white,
+              iconColor: Colors.white,
             ),
-            CustomButton(
-              text: 'Get In Touch',
-              onPressed: () => NavigationController.to
+            SubmitButton(
+              width: 170,
+              height: 48,
+              radius: 12,
+              title: 'Get In Touch',
+              onTap: () => NavigationController.to
                   .scrollToSection(SectionType.contact),
-              variant: ButtonVariant.outlined,
-              icon: const Icon(
-                Icons.mail_outline_rounded,
-                color: AppColors.primary,
-                size: 18,
-              ),
+              isIcon: true,
+              icon: Icons.mail_outline_rounded,
+              iconSize: 18,
+              fontSize: 14,
+              color: Colors.transparent,
+              borderColor: AppColors.primary,
+              textColor: AppColors.primary,
+              iconColor: AppColors.primary,
             ),
           ],
         ),
@@ -376,29 +380,29 @@ class _CorePillarsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pillars = [
-      _PillarItem(
+      const _PillarItem(
         icon: Icons.layers_rounded,
         title: 'Clean Architecture',
         desc: 'Modular, testable, and scalable enterprise code separation.',
         color: AppColors.primary,
       ),
-      _PillarItem(
+      const _PillarItem(
         icon: Icons.tune_rounded,
         title: 'Bloc & State Mgmt',
         desc: 'Robust state management for complex and reactive workflows.',
-        color: const Color(0xFF00E5FF),
+        color: Color(0xFF00E5FF),
       ),
-      _PillarItem(
+      const _PillarItem(
         icon: Icons.speed_rounded,
         title: 'High Performance',
         desc: 'Optimized rendering pipelines delivering butter-smooth 60 FPS.',
-        color: const Color(0xFF818CF8),
+        color: Color(0xFF818CF8),
       ),
-      _PillarItem(
+      const _PillarItem(
         icon: Icons.rocket_launch_rounded,
         title: 'Fast Delivery',
         desc: 'Agile sprints, automated CI/CD, and rapid production deployment.',
-        color: const Color(0xFFA855F7),
+        color: Color(0xFFA855F7),
       ),
     ];
 
@@ -417,38 +421,34 @@ class _CorePillarsGrid extends StatelessWidget {
             return SizedBox(
               width: itemWidth,
               child: GlassContainer(
-                padding: const EdgeInsets.all(20),
+                padding: 20.allPadding,
                 borderRadius: 16,
                 borderColor: pillar.color.withValues(alpha: 0.25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: 10.allPadding,
                       decoration: BoxDecoration(
                         color: pillar.color.withValues(alpha: 0.12),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(pillar.icon, color: pillar.color, size: 22),
                     ),
-                    const SizedBox(height: 14),
-                    Text(
-                      pillar.title,
-                      style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.textWhite,
-                      ),
+                    14.verSpace,
+                    MyText(
+                      text: pillar.title,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      fontColor: AppColors.textWhite,
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      pillar.desc,
-                      style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textMuted,
-                        height: 1.5,
-                      ),
+                    6.verSpace,
+                    MyText(
+                      text: pillar.desc,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      fontColor: AppColors.textMuted,
+                      height: 1.5,
                     ),
                   ],
                 ),
@@ -474,3 +474,4 @@ class _PillarItem {
     required this.color,
   });
 }
+

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/widgets/hover_builder.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 
 enum ButtonVariant { primary, outlined, ghost, actionPill }
 
@@ -65,16 +66,13 @@ class CustomButton extends StatelessWidget {
                 children: [
                   if (icon != null) ...[
                     icon!,
-                    const SizedBox(width: 8),
+                    8.horSpace,
                   ],
-                  Text(
-                    text,
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.white,
-                      letterSpacing: 0.5,
-                    ),
+                  MyText(
+                    text: text,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontColor: AppColors.white,
                   ),
                 ],
               ),
@@ -103,16 +101,14 @@ class CustomButton extends StatelessWidget {
                 children: [
                   if (icon != null) ...[
                     icon!,
-                    const SizedBox(width: 8),
+                    8.horSpace,
                   ],
-                  Text(
-                    text,
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color:
-                          isHovered ? AppColors.primaryLight : AppColors.primary,
-                    ),
+                  MyText(
+                    text: text,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    fontColor:
+                        isHovered ? AppColors.primaryLight : AppColors.primary,
                   ),
                 ],
               ),
@@ -140,17 +136,15 @@ class CustomButton extends StatelessWidget {
                 children: [
                   if (icon != null) ...[
                     icon!,
-                    const SizedBox(width: 6),
+                    6.horSpace,
                   ],
-                  Text(
-                    text,
-                    style: GoogleFonts.poppins(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: isHovered
-                          ? AppColors.textWhite
-                          : AppColors.textLight,
-                    ),
+                  MyText(
+                    text: text,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    fontColor: isHovered
+                        ? AppColors.textWhite
+                        : AppColors.textLight,
                   ),
                 ],
               ),
@@ -166,16 +160,14 @@ class CustomButton extends StatelessWidget {
                 children: [
                   if (icon != null) ...[
                     icon!,
-                    const SizedBox(width: 6),
+                    6.horSpace,
                   ],
-                  Text(
-                    text,
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color:
-                          isHovered ? AppColors.primary : AppColors.textLight,
-                    ),
+                  MyText(
+                    text: text,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    fontColor:
+                        isHovered ? AppColors.primary : AppColors.textLight,
                   ),
                 ],
               ),
@@ -185,3 +177,4 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+

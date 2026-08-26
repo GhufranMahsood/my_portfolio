@@ -5,9 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/config/utils/utils.dart';
 import 'package:my_portfolio/features/skill/view_model/skill_view_model.dart';
 import 'package:my_portfolio/widgets/glass_container.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 import 'package:my_portfolio/widgets/section_header.dart';
 import 'package:my_portfolio/widgets/tech_chip.dart';
 
@@ -33,7 +35,7 @@ class SkillView extends StatelessWidget {
             subtitle: AppConstants.techSubtitle,
             isCenter: true,
           ),
-          SizedBox(height: isDesktop ? 60 : 40),
+          (isDesktop ? 60 : 40).verSpace,
 
           if (isDesktop)
             Row(
@@ -43,7 +45,7 @@ class SkillView extends StatelessWidget {
                   flex: 7,
                   child: _TechCategoriesGrid(viewModel: viewModel),
                 ),
-                const SizedBox(width: 48),
+                48.horSpace,
                 const Expanded(
                   flex: 5,
                   child: _InteractiveCodeStudio(),
@@ -54,7 +56,7 @@ class SkillView extends StatelessWidget {
             Column(
               children: [
                 _TechCategoriesGrid(viewModel: viewModel),
-                const SizedBox(height: 48),
+                48.verSpace,
                 const _InteractiveCodeStudio(),
               ],
             ),
@@ -76,7 +78,7 @@ class _TechCategoriesGrid extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(bottom: 20),
           child: GlassContainer(
-            padding: const EdgeInsets.all(18),
+            padding: 18.allPadding,
             borderRadius: 16,
             borderColor: AppColors.darkBorder,
             child: Column(
@@ -92,19 +94,16 @@ class _TechCategoriesGrid extends StatelessWidget {
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    Text(
-                      category.title,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textLight,
-                        letterSpacing: 0.5,
-                      ),
+                    10.horSpace,
+                    MyText(
+                      text: category.title,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontColor: AppColors.textLight,
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
+                12.verSpace,
                 Wrap(
                   spacing: 10,
                   runSpacing: 10,
@@ -189,7 +188,7 @@ class FlutterEngineer {
                         shape: BoxShape.circle,
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    8.horSpace,
                     Container(
                       width: 12,
                       height: 12,
@@ -198,7 +197,7 @@ class FlutterEngineer {
                         shape: BoxShape.circle,
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    8.horSpace,
                     Container(
                       width: 12,
                       height: 12,
@@ -209,7 +208,7 @@ class FlutterEngineer {
                     ),
                   ],
                 ),
-                const SizedBox(width: 16),
+                16.horSpace,
                 // File Tab
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -222,14 +221,12 @@ class FlutterEngineer {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Icon(Icons.flutter_dash, size: 14, color: AppColors.primary),
-                      const SizedBox(width: 6),
-                      Text(
-                        'engineer_profile.dart',
-                        style: GoogleFonts.firaCode(
-                          fontSize: 12,
-                          color: AppColors.textWhite,
-                          fontWeight: FontWeight.w500,
-                        ),
+                      6.horSpace,
+                      const MyText(
+                        text: 'engineer_profile.dart',
+                        fontSize: 12,
+                        fontColor: AppColors.textWhite,
+                        fontWeight: FontWeight.w500,
                       ),
                     ],
                   ),
@@ -249,38 +246,38 @@ class FlutterEngineer {
 
           // Code Body
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: 20.allPadding,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _codeLine('1', 'class ', const Color(0xFFE5C07B), 'FlutterEngineer ',
                     const Color(0xFF61AFEF), '{', const Color(0xFFABB2BF)),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('2', '  final String ', const Color(0xFFE5C07B),
                     'name = ', const Color(0xFFABB2BF), '"${AppConstants.name}";', const Color(0xFF98C379)),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('3', '  final String ', const Color(0xFFE5C07B),
                     'status = ', const Color(0xFFABB2BF), '"Available for Projects";', const Color(0xFF98C379)),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('4', '  final List<String> ', const Color(0xFFE5C07B),
                     'specialties = [', const Color(0xFFABB2BF), '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('5', '    "Clean Architecture",', const Color(0xFF98C379), '', Colors.transparent, '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('6', '    "Bloc & Reactive State",', const Color(0xFF98C379), '', Colors.transparent, '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('7', '    "60 FPS Smooth UI",', const Color(0xFF98C379), '', Colors.transparent, '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('8', '  ];', const Color(0xFFABB2BF), '', Colors.transparent, '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('9', '  Future<void> ', const Color(0xFFE5C07B),
                     'buildMasterpiece() ', const Color(0xFF61AFEF), 'async {', const Color(0xFFABB2BF)),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('10', '    await deploy(', const Color(0xFFABB2BF),
                     'quality: 100%, performance: "60 FPS");', const Color(0xFF98C379), '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('11', '  }', const Color(0xFFABB2BF), '', Colors.transparent, '', Colors.transparent),
-                const SizedBox(height: 5),
+                5.verSpace,
                 _codeLine('12', '}', const Color(0xFFABB2BF), '', Colors.transparent, '', Colors.transparent),
               ],
             ),
@@ -321,12 +318,10 @@ class FlutterEngineer {
       children: [
         SizedBox(
           width: 26,
-          child: Text(
-            lineNum,
-            style: GoogleFonts.firaCode(
-              fontSize: 12,
-              color: AppColors.textDim,
-            ),
+          child: MyText(
+            text: lineNum,
+            fontSize: 12,
+            fontColor: AppColors.textDim,
           ),
         ),
         Expanded(
@@ -351,16 +346,15 @@ class FlutterEngineer {
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(icon, size: 16, color: color),
-        const SizedBox(width: 6),
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textLight,
-          ),
+        6.horSpace,
+        MyText(
+          text: label,
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+          fontColor: AppColors.textLight,
         ),
       ],
     );
   }
 }
+

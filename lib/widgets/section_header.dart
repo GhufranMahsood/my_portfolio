@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
-import 'package:my_portfolio/config/theme/app_text_styles.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 
 class SectionHeader extends StatelessWidget {
   final String title;
@@ -55,36 +55,30 @@ class SectionHeader extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                 ),
-                const SizedBox(width: 8),
-                Text(
-                  tag!,
-                  style: GoogleFonts.firaCode(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.primary,
-                    letterSpacing: 1.0,
-                  ),
+                8.horSpace,
+                MyText(
+                  text: tag!,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w600,
+                  fontColor: AppColors.primary,
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          16.verSpace,
         ],
 
         // Section Title with gradient highlight
-        Text(
-          title,
-          textAlign: isCenter ? TextAlign.center : TextAlign.start,
-          style: GoogleFonts.poppins(
-            fontSize: 38,
-            fontWeight: FontWeight.w800,
-            color: AppColors.textWhite,
-            letterSpacing: -0.5,
-          ),
+        MyText(
+          text: title,
+          alignment: isCenter ? TextAlign.center : TextAlign.start,
+          fontSize: 38,
+          fontWeight: FontWeight.w800,
+          fontColor: AppColors.textWhite,
         ),
 
         if (quote != null) ...[
-          const SizedBox(height: 14),
+          14.verSpace,
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 720),
             child: Container(
@@ -97,23 +91,29 @@ class SectionHeader extends StatelessWidget {
                   ),
                 ),
               ),
-              child: Text(
-                quote!,
-                textAlign: isCenter ? TextAlign.center : TextAlign.start,
-                style: AppTextStyles.quoteText,
+              child: MyText(
+                text: quote!,
+                alignment: isCenter ? TextAlign.center : TextAlign.start,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                fontColor: AppColors.textMuted,
+                height: 1.6,
               ),
             ),
           ),
         ],
 
         if (subtitle != null) ...[
-          const SizedBox(height: 12),
+          12.verSpace,
           ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 700),
-            child: Text(
-              subtitle!,
-              textAlign: isCenter ? TextAlign.center : TextAlign.start,
-              style: AppTextStyles.sectionSubtitle,
+            child: MyText(
+              text: subtitle!,
+              alignment: isCenter ? TextAlign.center : TextAlign.start,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              fontColor: AppColors.textMuted,
+              height: 1.6,
             ),
           ),
         ],
@@ -121,3 +121,4 @@ class SectionHeader extends StatelessWidget {
     );
   }
 }
+

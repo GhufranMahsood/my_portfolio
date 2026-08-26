@@ -6,11 +6,13 @@ import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
 import 'package:my_portfolio/config/utils/enum.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/header/view_model/header_view_model.dart';
-import 'package:my_portfolio/widgets/custom_button.dart';
 import 'package:my_portfolio/widgets/glass_container.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 import 'package:my_portfolio/widgets/social_icons_row.dart';
 import 'package:my_portfolio/widgets/stats_card.dart';
+import 'package:my_portfolio/widgets/submit_button.dart';
 
 class HeaderView extends StatelessWidget {
   const HeaderView({super.key});
@@ -37,7 +39,7 @@ class HeaderView extends StatelessWidget {
                   flex: 6,
                   child: _HeroTextContent(viewModel: viewModel),
                 ),
-                const SizedBox(width: 48),
+                48.horSpace,
                 Expanded(
                   flex: 5,
                   child: _HeroImageWithFloatingBadges(
@@ -53,12 +55,12 @@ class HeaderView extends StatelessWidget {
                   profileAsset: viewModel.headerData.profileAsset,
                   size: isTablet ? 280 : 220,
                 ),
-                const SizedBox(height: 40),
+                40.verSpace,
                 _HeroTextContent(viewModel: viewModel, isCenter: true),
               ],
             ),
 
-          SizedBox(height: isDesktop ? 70 : 44),
+          (isDesktop ? 70 : 44).verSpace,
 
           // Hero Metrics Banner
           GlassContainer(
@@ -177,19 +179,17 @@ class _HeroTextContent extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
-              Text(
-                'Available for New Projects',
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.primaryLight,
-                ),
+              8.horSpace,
+              const MyText(
+                text: 'Available for New Projects',
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                fontColor: AppColors.primaryLight,
               ),
             ],
           ),
         ),
-        const SizedBox(height: 20),
+        20.verSpace,
 
         // Dual-Tone Gradient Headline
         RichText(
@@ -198,7 +198,7 @@ class _HeroTextContent extends StatelessWidget {
             children: [
               TextSpan(
                 text: '${AppConstants.firstName}\n',
-                style: GoogleFonts.poppins(
+                style: GoogleFonts.urbanist(
                   fontSize: isCenter ? 44 : 60,
                   fontWeight: FontWeight.w800,
                   color: AppColors.textWhite,
@@ -217,7 +217,7 @@ class _HeroTextContent extends StatelessWidget {
                     AppConstants.lastName.isNotEmpty
                         ? AppConstants.lastName
                         : 'Engineer',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: isCenter ? 44 : 60,
                       fontWeight: FontWeight.w800,
                       color: Colors.white,
@@ -230,7 +230,7 @@ class _HeroTextContent extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 16),
+        16.verSpace,
 
         // Subtitle Role
         Row(
@@ -249,18 +249,16 @@ class _HeroTextContent extends StatelessWidget {
                 size: 16,
               ),
             ),
-            const SizedBox(width: 10),
-            Text(
-              viewModel.headerData.role,
-              style: GoogleFonts.poppins(
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textLight,
-              ),
+            10.horSpace,
+            MyText(
+              text: viewModel.headerData.role,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              fontColor: AppColors.textLight,
             ),
           ],
         ),
-        const SizedBox(height: 24),
+        24.verSpace,
 
         // Social Icons Row
         SocialIconsRow(
@@ -268,7 +266,7 @@ class _HeroTextContent extends StatelessWidget {
               ? MainAxisAlignment.center
               : MainAxisAlignment.start,
         ),
-        const SizedBox(height: 32),
+        32.verSpace,
 
         // Action Buttons Row
         Wrap(
@@ -276,25 +274,35 @@ class _HeroTextContent extends StatelessWidget {
           runSpacing: 12,
           alignment: isCenter ? WrapAlignment.center : WrapAlignment.start,
           children: [
-            CustomButton(
-              text: "LET'S CHAT!",
-              onPressed: viewModel.onChatPressed,
-              icon: const Icon(
-                Icons.chat_bubble_outline_rounded,
-                color: Colors.white,
-                size: 18,
-              ),
+            SubmitButton(
+              width: 160,
+              height: 48,
+              radius: 12,
+              title: "LET'S CHAT!",
+              onTap: viewModel.onChatPressed,
+              isIcon: true,
+              icon: Icons.chat_bubble_outline_rounded,
+              iconSize: 18,
+              fontSize: 14,
+              color: AppColors.primary,
+              textColor: Colors.white,
+              iconColor: Colors.white,
             ),
-            CustomButton(
-              text: "View Projects",
-              onPressed: () =>
+            SubmitButton(
+              width: 160,
+              height: 48,
+              radius: 12,
+              title: "View Projects",
+              onTap: () =>
                   NavigationController.to.scrollToSection(SectionType.projects),
-              variant: ButtonVariant.outlined,
-              icon: const Icon(
-                Icons.work_outline_rounded,
-                color: AppColors.primary,
-                size: 18,
-              ),
+              isIcon: true,
+              icon: Icons.work_outline_rounded,
+              iconSize: 18,
+              fontSize: 14,
+              color: Colors.transparent,
+              borderColor: AppColors.primary,
+              textColor: AppColors.primary,
+              iconColor: AppColors.primary,
             ),
           ],
         ),
@@ -453,17 +461,16 @@ class _FloatingSkillBadge extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(icon, size: 16, color: color),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: GoogleFonts.poppins(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textWhite,
-            ),
+          8.horSpace,
+          MyText(
+            text: label,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            fontColor: AppColors.textWhite,
           ),
         ],
       ),
     );
   }
 }
+

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/config/responsive/responsive_layout.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
+import 'package:my_portfolio/config/utils/extensions.dart';
 import 'package:my_portfolio/features/contact_us/view_model/contact_view_model.dart';
-import 'package:my_portfolio/widgets/custom_button.dart';
 import 'package:my_portfolio/widgets/footer_widget.dart';
 import 'package:my_portfolio/widgets/glass_container.dart';
 import 'package:my_portfolio/widgets/hover_builder.dart';
+import 'package:my_portfolio/widgets/my_text.dart';
 import 'package:my_portfolio/widgets/section_header.dart';
 import 'package:my_portfolio/widgets/social_icons_row.dart';
+import 'package:my_portfolio/widgets/submit_button.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});
@@ -35,7 +36,7 @@ class ContactView extends StatelessWidget {
                 subtitle: viewModel.contactData.subtitle,
                 isCenter: true,
               ),
-              SizedBox(height: isDesktop ? 54 : 36),
+              (isDesktop ? 54 : 36).verSpace,
 
               // Calendar Card + Contact Methods Box
               Container(
@@ -48,7 +49,7 @@ class ContactView extends StatelessWidget {
                       day: viewModel.contactData.calendarDay,
                       weekday: viewModel.contactData.calendarWeekday,
                     ),
-                    const SizedBox(height: 32),
+                    32.verSpace,
 
                     // Email Card
                     _ContactDetailCard(
@@ -58,7 +59,7 @@ class ContactView extends StatelessWidget {
                       onTap: viewModel.sendEmail,
                       onCopy: viewModel.copyEmail,
                     ),
-                    const SizedBox(height: 14),
+                    14.verSpace,
 
                     // Phone Card
                     _ContactDetailCard(
@@ -68,21 +69,24 @@ class ContactView extends StatelessWidget {
                       onTap: viewModel.callPhone,
                       onCopy: viewModel.copyPhone,
                     ),
-                    const SizedBox(height: 32),
+                    32.verSpace,
 
                     // Schedule 15 Min Call Button
-                    CustomButton(
-                      text: viewModel.contactData.callCta,
-                      onPressed: viewModel.bookMeeting,
+                    SubmitButton(
+                      title: viewModel.contactData.callCta,
+                      onTap: viewModel.bookMeeting,
                       width: double.infinity,
                       height: 54,
-                      icon: const Icon(
-                        Icons.video_call_rounded,
-                        color: Colors.white,
-                        size: 24,
-                      ),
+                      radius: 12,
+                      isIcon: true,
+                      icon: Icons.video_call_rounded,
+                      iconSize: 24,
+                      fontSize: 16,
+                      color: AppColors.primary,
+                      textColor: Colors.white,
+                      iconColor: Colors.white,
                     ),
-                    const SizedBox(height: 40),
+                    40.verSpace,
 
                     // Social Icons Row
                     const SocialIconsRow(
@@ -148,21 +152,18 @@ class _CalendarCard extends StatelessWidget {
               gradient: AppColors.primaryGradient,
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
             ),
-            child: Text(
-              month.toUpperCase(),
-              textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: AppColors.white,
-                letterSpacing: 1.2,
-              ),
+            child: MyText(
+              text: month.toUpperCase(),
+              alignment: TextAlign.center,
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              fontColor: AppColors.white,
             ),
           ),
 
           // Day & Weekday
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 22),
+            padding: 22.verticalPadding,
             child: Column(
               children: [
                 ShaderMask(
@@ -171,24 +172,20 @@ class _CalendarCard extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ).createShader(bounds),
-                  child: Text(
-                    day,
-                    style: GoogleFonts.poppins(
-                      fontSize: 54,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white,
-                      height: 1.0,
-                    ),
+                  child: MyText(
+                    text: day,
+                    fontSize: 54,
+                    fontWeight: FontWeight.w800,
+                    fontColor: Colors.white,
+                    height: 1.0,
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  weekday,
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.textMuted,
-                  ),
+                8.verSpace,
+                MyText(
+                  text: weekday,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: AppColors.textMuted,
                 ),
               ],
             ),
@@ -228,7 +225,7 @@ class _ContactDetailCard extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(10),
+                padding: 10.allPadding,
                 decoration: BoxDecoration(
                   color: isHovered
                       ? AppColors.primary.withValues(alpha: 0.2)
@@ -247,29 +244,25 @@ class _ContactDetailCard extends StatelessWidget {
                   size: 20,
                 ),
               ),
-              const SizedBox(width: 16),
+              16.horSpace,
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.textDim,
-                      ),
+                    MyText(
+                      text: title,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w500,
+                      fontColor: AppColors.textDim,
                     ),
-                    const SizedBox(height: 2),
-                    Text(
-                      text,
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: isHovered
-                            ? AppColors.textWhite
-                            : AppColors.textLight,
-                      ),
+                    2.verSpace,
+                    MyText(
+                      text: text,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      fontColor: isHovered
+                          ? AppColors.textWhite
+                          : AppColors.textLight,
                     ),
                   ],
                 ),
@@ -295,3 +288,4 @@ class _ContactDetailCard extends StatelessWidget {
     );
   }
 }
+
