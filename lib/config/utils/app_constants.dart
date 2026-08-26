@@ -72,7 +72,8 @@ class AppConstants {
   static const String mediumUrl = 'https://medium.com/@ghufranmahsood';
   static const String instagramUrl =
       'https://www.instagram.com/ghufranmahsood?igsi=dWdlZWdobjNuY3c5';
-  static const String facebookUrl = 'https://facebook.com/';
+  static const String facebookUrl =
+      'https://www.facebook.com/share/1Bxh1VLYMy/';
   static const String calendlyUrl = 'https://calendly.com';
   static const String resumeUrl = 'https://github.com/GhufranMahsood';
 

@@ -35,9 +35,7 @@ class MyApp extends StatelessWidget {
 }
 
 
-///important
-/*if you want  to deploy on firebase you can use this command
 
-flutter build web --release
-npx -y firebase-tools@latest deploy --only hosting
-*/
+// flutter build web --release
+// firebase deploy --only hosting
+

@@ -7,7 +7,7 @@ class SubmitButton extends StatelessWidget {
   final String title;
   final bool isLoading;
   final double height;
-  final double width;
+  final double? width;
   final double iconSize, fontSize;
   final FontWeight fontWeight;
   final Color? color;
@@ -20,7 +20,7 @@ class SubmitButton extends StatelessWidget {
   final bool isIcon;
   final IconData icon;
   final TextDirection? textDirection;
-
+  final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
 
   const SubmitButton({
@@ -28,7 +28,7 @@ class SubmitButton extends StatelessWidget {
     required this.title,
     this.onTap,
     this.height = 50,
-    this.width = double.infinity,
+    this.width,
     this.isLoading = false,
     this.color,
     this.iconColor,
@@ -43,6 +43,7 @@ class SubmitButton extends StatelessWidget {
     this.icon = Icons.headset_mic_outlined,
     this.fontWeight = FontWeight.w600,
     this.textDirection,
+    this.padding,
   });
 
   @override
@@ -61,7 +62,7 @@ class SubmitButton extends StatelessWidget {
       child: InkWell(
         onTap: isLoading ? null : onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: padding ?? const EdgeInsets.symmetric(horizontal: 14),
           width: width,
           height: height,
           decoration: BoxDecoration(
@@ -69,7 +70,11 @@ class SubmitButton extends StatelessWidget {
             border: Border.all(color: borderColor),
           ),
           child: isLoading
-              ? Center(child: CupertinoActivityIndicator(color: effectiveLoadingColor))
+              ? Center(
+                  child: CupertinoActivityIndicator(
+                    color: effectiveLoadingColor,
+                  ),
+                )
               : Row(
                   textDirection: textDirection,
                   mainAxisSize: MainAxisSize.min,
@@ -79,12 +84,15 @@ class SubmitButton extends StatelessWidget {
                       Icon(icon, color: effectiveIconColor, size: iconSize),
                       6.horSpace,
                     ],
-                    MyText(
-                      text: title,
-                      fontSize: fontSize,
-                      fontColor: effectiveTextColor,
-                      fontWeight: fontWeight,
-                      alignment: TextAlign.center,
+                    Flexible(
+                      child: MyText(
+                        text: title,
+                        fontSize: fontSize,
+                        fontColor: effectiveTextColor,
+                        fontWeight: fontWeight,
+                        alignment: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                     if (isArrow) ...[
                       6.horSpace,

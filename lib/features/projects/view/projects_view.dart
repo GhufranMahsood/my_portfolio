@@ -289,13 +289,14 @@ class _ProjectCard extends StatelessWidget {
                       ),
                       // Image Thumbnail
                       SizedBox(
-                        height: 150,
+                        height: 160,
                         width: double.infinity,
                         child: ClipRRect(
                           borderRadius: const BorderRadius.vertical(bottom: Radius.circular(13)),
                           child: Image.asset(
                             project.imageAsset,
                             fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
                                 color: AppColors.darkCardSecondary,
@@ -354,8 +355,11 @@ class _ProjectCard extends StatelessWidget {
                   runSpacing: 8,
                   children: project.actionLinks.map((link) {
                     return SubmitButton(
-                      width: 105,
                       height: 32,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       radius: 8,
                       fontSize: 11,
                       title: link.title,

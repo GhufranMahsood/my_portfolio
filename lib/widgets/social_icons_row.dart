@@ -46,6 +46,11 @@ class SocialIconsRow extends StatelessWidget {
         onTap: () => UrlService.openUrl(AppConstants.instagramUrl),
       ),
       _SocialItem(
+        icon: FontAwesomeIcons.facebookF,
+        tooltip: 'Facebook',
+        onTap: () => UrlService.openUrl(AppConstants.facebookUrl),
+      ),
+      _SocialItem(
         icon: FontAwesomeIcons.envelope,
         tooltip: 'Email',
         onTap: () => UrlService.sendEmail(AppConstants.email),

@@ -14,14 +14,16 @@ class ProjectRepo {
         badgeType: ProjectBadgeType.product,
         actionLinks: [
           ProjectActionLink(
-            title: 'Store',
-            url: 'https://play.google.com/store/apps',
+            title: 'Play Store',
+            url:
+                'https://play.google.com/store/apps/details?id=com.bitbuilders.style_Hublly&pli=1',
             icon: FontAwesomeIcons.googlePlay,
           ),
+
           ProjectActionLink(
-            title: 'GitHub',
-            url: 'https://github.com/GhufranMahsood/StyleHubly',
-            icon: FontAwesomeIcons.github,
+            title: 'App Store',
+            url: 'https://apps.apple.com/us/app/style-hubly/id6788476019',
+            icon: FontAwesomeIcons.appStore,
           ),
         ],
       ),
@@ -34,7 +36,7 @@ class ProjectRepo {
         actionLinks: [
           ProjectActionLink(
             title: 'Web',
-            url: 'https://github.com/GhufranMahsood',
+            url: 'https://my-portfolio-24cf6.web.app/',
             icon: Icons.language_rounded,
           ),
           ProjectActionLink(
@@ -52,15 +54,16 @@ class ProjectRepo {
         badgeType: ProjectBadgeType.product,
         actionLinks: [
           ProjectActionLink(
-            title: 'Store',
-            url: 'https://play.google.com/store/apps',
+            title: 'Live Demo',
+            url:
+                'https://drive.google.com/file/d/10njVUkL9rftqPOAsigVExOWyy_GuDsWL/view?usp=sharing',
             icon: FontAwesomeIcons.googlePlay,
           ),
-          ProjectActionLink(
-            title: 'GitHub',
-            url: 'https://github.com/GhufranMahsood/Habit-Pro',
-            icon: FontAwesomeIcons.github,
-          ),
+          // ProjectActionLink(
+          //   title: 'GitHub',
+          //   url: 'https://github.com/GhufranMahsood/Habit-Pro',
+          //   icon: FontAwesomeIcons.github,
+          // ),
         ],
       ),
       ProjectModel(
@@ -68,21 +71,18 @@ class ProjectRepo {
         description:
             'AI-powered Text-to-Speech engine featuring 30+ synthetic voice identities, cinematic live waveform rendering, and studio-grade emotion modulation on iOS & Android.',
         imageAsset: AppConstants.project4Img,
-        badgeType: ProjectBadgeType.product,
+        badgeType: ProjectBadgeType.openSource,
         actionLinks: [
           ProjectActionLink(
             title: 'Live Demo',
-            url: 'https://github.com/GhufranMahsood/Vox-Nebula-AI-Voice-Synthesis',
+            url:
+                'https://github.com/GhufranMahsood/Vox-Nebula-AI-Voice-Synthesis',
             icon: Icons.graphic_eq_rounded,
           ),
-          ProjectActionLink(
-            title: 'Store',
-            url: 'https://play.google.com/store/apps',
-            icon: FontAwesomeIcons.googlePlay,
-          ),
+
           ProjectActionLink(
             title: 'GitHub',
-            url: 'https://github.com/GhufranMahsood/Vox-Nebula-AI-Voice-Synthesis',
+            url: 'https://github.com/GhufranMahsood/voice_generator_app',
             icon: FontAwesomeIcons.github,
           ),
         ],
