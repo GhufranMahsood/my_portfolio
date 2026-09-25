@@ -76,6 +76,8 @@ class AppConstants {
       'https://www.facebook.com/share/1Bxh1VLYMy/';
   static const String calendlyUrl = 'https://calendly.com';
   static const String resumeUrl = 'https://github.com/GhufranMahsood';
+  static const String resumePdf = 'assets/pdf/my_resume.pdf';
+  static const String resumeFileName = 'Ghufran_Mahsood_Resume.pdf';
 
   // Assets
   static const String profileImg = 'assets/images/profile.png';

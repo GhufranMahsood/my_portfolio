@@ -4,6 +4,8 @@ class AboutModel {
   final String quote;
   final String bio;
   final String resumeUrl;
+  final String resumePdfPath;
+  final String resumeFileName;
   final List<String> collageImages;
 
   const AboutModel({
@@ -12,6 +14,8 @@ class AboutModel {
     required this.quote,
     required this.bio,
     required this.resumeUrl,
+    required this.resumePdfPath,
+    required this.resumeFileName,
     required this.collageImages,
   });
 }

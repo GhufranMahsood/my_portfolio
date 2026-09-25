@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "ghufran-mahsood",
     "public": "build/web",
     "ignore": [
       "firebase.json",

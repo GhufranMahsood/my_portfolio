@@ -6,8 +6,8 @@ import 'utils.dart';
 
 extension NavigaTion on Widget {
   dynamic get navigate => Get.to(this, transition: Transition.fadeIn);
-  dynamic get navigateAndRemove => Get.off(this);
-  dynamic get replace => Get.offAll(this);
+  dynamic get navigateAndRemove => Get.off(this, routeName: '/');
+  dynamic get replace => Get.offAll(this, routeName: '/');
 }
 
 extension ContextExtension on BuildContext {

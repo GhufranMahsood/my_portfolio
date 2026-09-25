@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio/config/theme/app_theme.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
@@ -8,6 +9,7 @@ import 'package:my_portfolio/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -29,7 +31,13 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.darkTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.dark,
-      home: const SplashView(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const SplashView(),
+        ),
+      ],
     );
   }
 }

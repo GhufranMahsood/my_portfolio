@@ -9,6 +9,8 @@ class AboutRepo {
       quote: AppConstants.aboutQuote,
       bio: AppConstants.aboutBio,
       resumeUrl: AppConstants.resumeUrl,
+      resumePdfPath: AppConstants.resumePdf,
+      resumeFileName: AppConstants.resumeFileName,
       collageImages: [
         AppConstants.project1Img,
         AppConstants.project2Img,

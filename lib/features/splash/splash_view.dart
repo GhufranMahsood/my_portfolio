@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_portfolio/config/theme/app_colors.dart';
 import 'package:my_portfolio/config/utils/app_constants.dart';
 import 'package:my_portfolio/config/utils/extensions.dart';
@@ -37,7 +38,7 @@ class _SplashViewState extends State<SplashView>
 
     Future.delayed(const Duration(milliseconds: 1800), () {
       if (mounted) {
-        const MainView().navigateAndRemove;
+        Get.offAll(() => const MainView(), routeName: '/');
       }
     });
   }
